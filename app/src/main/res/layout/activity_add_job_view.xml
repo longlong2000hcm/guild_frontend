@@ -12,25 +12,112 @@
         />
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/TitleText"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="Title"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/EditTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Title"
+        app:layout_constraintStart_toStartOf="@+id/EditTitle"
         >
     </TextView>
 
 
     <EditText
+        android:id="@+id/EditTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:hint="Write your title"
+        android:background="@drawable/custome_edit_text_bg"
         android:textColor="#0000"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         >
     </EditText>
 
+    <TextView
+        android:id="@+id/JobDescription"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="Job description"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/JobDescriptionText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/JobDescriptionText"
+        >
+    </TextView>
+
+
+    <EditText
+        android:id="@+id/JobDescriptionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/EditTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/EditTitle"
+        android:hint="Write job description"
+        android:background="@drawable/custome_edit_text_bg"
+        android:textColor="#0000"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="200dp"
+        >
+    </EditText>
+
+    <TextView
+        android:id="@+id/OwnerDescription"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="Owner description"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/OwnerDescriptionText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/OwnerDescriptionText"
+        >
+    </TextView>
+
+    <EditText
+        android:id="@+id/OwnerDescriptionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/JobDescriptionText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/JobDescriptionText"
+        android:hint="Description of yourself"
+        android:background="@drawable/custome_edit_text_bg"
+        android:textColor="#0000"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="200dp"
+        >
+    </EditText>
+
+    <Button
+        android:id="@+id/BtnAddJob"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/gradient_button"
+        android:text="Submit"
+        android:textColor="#FFFF"
+        android:layout_margin="20dp"
+        android:gravity="center"
+
+        >
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
