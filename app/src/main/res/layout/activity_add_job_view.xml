@@ -116,6 +116,7 @@
         android:layout_marginTop="51dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
+        android:drawableLeft="@drawable/ic_phone"
         >
     </EditText>
 
@@ -131,6 +132,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_mail"
         >
     </EditText>
 
@@ -146,6 +148,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_location"
         >
     </EditText>
 
@@ -161,6 +164,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_salary"
         >
     </EditText>
 
