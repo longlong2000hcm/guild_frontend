@@ -30,13 +30,13 @@
         android:id="@+id/EditTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:hint="Write your title"
         android:background="@drawable/custome_edit_text_bg"
         android:textColor="#0000"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         >
@@ -61,16 +61,15 @@
         android:id="@+id/JobDescriptionText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/EditTitle"
+        app:layout_constraintTop_toBottomOf="@id/EditTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/EditTitle"
         android:hint="Write job description"
         android:background="@drawable/custome_edit_text_bg"
         android:textColor="#0000"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="200dp"
         >
     </EditText>
 
@@ -93,16 +92,15 @@
         android:id="@+id/AddUserDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/JobDescriptionText"
+        app:layout_constraintTop_toBottomOf="@id/JobDescriptionText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/JobDescriptionText"
         android:hint="Description of yourself"
         android:background="@drawable/custome_edit_text_bg"
         android:textColor="#0000"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="200dp"
         >
     </EditText>
 
@@ -111,15 +109,14 @@
         android:id="@+id/ContactPhoneNr"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/AddUserDescription"
+        app:layout_constraintTop_toBottomOf="@id/AddUserDescription"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/AddUserDescription"
         android:hint="Phone number"
         android:textColor="#0000"
+        android:layout_marginTop="51dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="200dp"
         >
     </EditText>
 
@@ -127,15 +124,14 @@
         android:id="@+id/ContactMail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/ContactPhoneNr"
+        app:layout_constraintTop_toBottomOf="@id/ContactPhoneNr"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/ContactPhoneNr"
         android:hint="Mail address"
         android:textColor="#0000"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="10dp"
         >
     </EditText>
 
@@ -143,15 +139,14 @@
         android:id="@+id/ContactLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/ContactMail"
+        app:layout_constraintTop_toBottomOf="@id/ContactMail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/ContactMail"
         android:hint="Location"
         android:textColor="#0000"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="10dp"
         >
     </EditText>
 
@@ -159,15 +154,14 @@
         android:id="@+id/SalaryOffer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/ContactLocation"
+        app:layout_constraintTop_toBottomOf="@id/ContactLocation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/ContactLocation"
         android:hint="Salary"
         android:textColor="#0000"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="10dp"
         >
     </EditText>
 
