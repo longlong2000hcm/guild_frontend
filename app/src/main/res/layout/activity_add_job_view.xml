@@ -11,6 +11,7 @@
         layout="@layout/toolbar"
         />
 
+
     <TextView
         android:id="@+id/TitleText"
         android:layout_width="150dp"
@@ -104,6 +105,7 @@
         >
     </EditText>
 
+
     <EditText
         android:id="@+id/ContactPhoneNr"
         android:layout_width="0dp"
@@ -113,9 +115,9 @@
         app:layout_constraintRight_toRightOf="parent"
         android:hint="Phone number"
         android:textColor="#0000"
-        android:layout_marginTop="51dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:drawableLeft="@drawable/ic_phone"
         >
     </EditText>
@@ -129,8 +131,8 @@
         app:layout_constraintRight_toRightOf="parent"
         android:hint="Mail address"
         android:textColor="#0000"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_mail"
         >
@@ -145,8 +147,8 @@
         app:layout_constraintRight_toRightOf="parent"
         android:hint="Location"
         android:textColor="#0000"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_location"
         >
@@ -161,8 +163,8 @@
         app:layout_constraintRight_toRightOf="parent"
         android:hint="Salary"
         android:textColor="#0000"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_salary"
         >
@@ -183,5 +185,5 @@
         android:gravity="center"
         >
     </Button>
-
+        
 </androidx.constraintlayout.widget.ConstraintLayout>

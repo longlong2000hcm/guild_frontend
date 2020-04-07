@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
-    <solid android:color="#3983c5"/>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    >
+    <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
-    <corners android:radius="999dp"/>
+        <solid android:color="#3983c5"/>
 
-</shape>
+        <corners android:radius="999dp"/>
+
+    </shape>
+</item>
+<item
+    android:height="40dp"
+    android:width="40dp"
+    android:gravity="center"
+    android:drawable="@drawable/ic_plusicon"/>
+</layer-list>
