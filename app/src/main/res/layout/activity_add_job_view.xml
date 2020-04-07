@@ -104,7 +104,6 @@
         >
     </EditText>
 
-
     <EditText
         android:id="@+id/ContactPhoneNr"
         android:layout_width="0dp"
