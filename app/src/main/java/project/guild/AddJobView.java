@@ -3,23 +3,33 @@ package project.guild;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 public class AddJobView extends AppCompatActivity {
+    private CheckBox mCheckbox;
+    private Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job_view);
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         TextView textView = findViewById(R.id.DisclaimerText);
 
@@ -34,5 +44,35 @@ public class AddJobView extends AppCompatActivity {
 
         textView.setText(ss);
 
+
+        final Button mButton=(Button)findViewById( R.id.BtnSubmitJob);
+        CheckBox mCheckBox= ( CheckBox ) findViewById( R.id.DisclaimerCB);
+        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if ( isChecked )
+                {
+                    mButton.setEnabled(true);
+                    mButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            moveToactivity_add_job_view();
+                        }
+                    });
+
+                }else{
+                    mButton.setEnabled(false);
+                }
+            }
+        });
+
     }
+
+    private void moveToactivity_add_job_view(){
+        Intent intent = new Intent(AddJobView.this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
