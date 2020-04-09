@@ -19,19 +19,27 @@ import android.widget.TextView;
 public class AddJobView extends AppCompatActivity {
     private CheckBox mCheckbox;
     private Button mButton;
+    private Button mCloseBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job_view);
 
+        mCloseBtn = findViewById(R.id.BtnClose);
 
+        mCloseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                moveToactivity_add_job_view();
+            }
+        });
 
 
         TextView textView = findViewById(R.id.DisclaimerText);
 
-                String text = "\nDisclaimer\nCreating this ad adds a small one-time fee." +
-                        "This means that the business keeps up and the application is used seriously. By checking in you agree and approve these conditions.\n\n";
+                String text = "\nDisclaimer\nSubmitting your job offer adds a small one-time fee. To keep this service clean and serious. (For now its free) You can only proceed by checking in the box before you can submit.\n";
 
         SpannableString ss = new SpannableString(text);
 
