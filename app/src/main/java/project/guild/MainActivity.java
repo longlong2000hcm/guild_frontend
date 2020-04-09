@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BtnAddView = findViewById(R.id.BtnAddJob);
-        
-        List<Job> jobList = new ArrayList<>();
+
+        jobList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listView);
 
         BtnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 moveToactivity_add_job_view();
             }
         });
@@ -42,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
         JobListAdapter adapter = new JobListAdapter(this, R.layout.jobs, jobList);
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent jobIntent = new Intent(getApplicationContext(), DetailedJobView.class);
+                jobIntent.putExtra("JOB", (Serializable) jobList.get(position));
+                startActivity(jobIntent);
+            }
+        });
     }
 
     private void moveToactivity_add_job_view(){
