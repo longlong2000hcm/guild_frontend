@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp" >
+
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="Title" />
+
+    <TextView android:id="@+id/textViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_alignLeft="@+id/textViewTitle"
+        android:layout_below="@+id/textViewTitle"
+        tools:text="Job description" />
+
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewText"
+        android:layout_alignLeft="@+id/textViewText"
+        android:layout_marginLeft="237dp"
+        android:layout_marginTop="-40dp"
+        android:textColor="@android:color/black"
+        tools:text="Location" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewLocation"
+        android:layout_alignLeft="@+id/textViewText"
+        android:layout_marginLeft="237dp"
+        android:layout_marginTop="2dp"
+        tools:text="Date"
+        android:text="Date" />
+
+
+</RelativeLayout>
