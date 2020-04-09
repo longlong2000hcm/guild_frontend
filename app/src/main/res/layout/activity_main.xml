@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <Button
+    <Button
        android:id="@+id/BtnAddJob"
        android:layout_width="60dp"
        android:layout_height="60dp"
@@ -15,6 +15,11 @@
        android:background="@drawable/circle_button"
        android:layout_margin="20dp"
        >
-   </Button>
+    </Button>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
