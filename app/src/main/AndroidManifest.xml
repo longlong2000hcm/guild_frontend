@@ -13,6 +13,10 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Create new job">
         </activity>
+        <activity android:name=".DetailedJobView"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Detailed view of a job">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
