@@ -26,9 +26,6 @@ public class AddJobView extends AppCompatActivity {
         setContentView(R.layout.activity_add_job_view);
 
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
 
 
         TextView textView = findViewById(R.id.DisclaimerText);
@@ -61,12 +58,12 @@ public class AddJobView extends AppCompatActivity {
                             moveToactivity_add_job_view();
                         }
                     });
-
                 }else{
                     mButton.setEnabled(false);
                 }
             }
         });
+
 
     }
 
