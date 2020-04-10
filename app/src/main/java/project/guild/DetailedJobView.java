@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class DetailedJobView extends AppCompatActivity {
@@ -30,6 +32,14 @@ public class DetailedJobView extends AppCompatActivity {
         // set title
         TextView title_text = findViewById(R.id.title);
         title_text.setText(title);
+
+        // set description
+        TextView description_text = findViewById(R.id.JobDescriptionText);
+        description_text.setText(description);
+
+        // set location
+        TextView location_text = findViewById(R.id.location);
+        location_text.setText(location);
 
         // set onclick for back button
         Button back_button = findViewById(R.id.back);
