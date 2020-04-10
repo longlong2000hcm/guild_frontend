@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp" >
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.65"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:singleLine="true"
+        android:gravity="center_vertical"
         android:textColor="@android:color/black"
+        android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Title" />
 
-    <TextView android:id="@+id/textViewText"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textViewText"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.65"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:layout_alignLeft="@+id/textViewTitle"
-        android:layout_below="@+id/textViewTitle"
+        android:gravity="center_vertical"
+        android:maxLength="100"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
         tools:text="Job description" />
 
     <TextView
         android:id="@+id/textViewLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.25"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
         android:layout_below="@+id/textViewText"
         android:layout_alignLeft="@+id/textViewText"
-        android:layout_marginLeft="237dp"
-        android:layout_marginTop="-40dp"
         android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="@+id/textViewTitle"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
         tools:text="Location" />
 
     <TextView
         android:id="@+id/textViewDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewLocation"
-        android:layout_alignLeft="@+id/textViewText"
-        android:layout_marginLeft="237dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.25"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        app:layout_constraintTop_toTopOf="@+id/textViewText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLocation"
+        app:layout_constraintLeft_toRightOf="@+id/textViewText"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewText"
         tools:text="Date"
         android:text="Date" />
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
