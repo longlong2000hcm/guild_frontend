@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <Toolbar
             android:id="@+id/toolbar"
@@ -20,9 +20,9 @@
 
             <Button
                 android:id="@+id/back"
-                android:layout_width="30dp"
-                android:layout_height="16dp"
-                android:background="@drawable/close_button"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/back_arrow_icon"/>
 
             <TextView
                 android:id="@+id/title"
@@ -43,7 +43,7 @@
             android:text="@string/job_description"
             android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="85dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="25dp"
             android:paddingBottom="3dp"
@@ -56,19 +56,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="85dp"
             android:layout_marginRight="35dp"
             android:paddingBottom="15dp"
             app:layout_constraintTop_toBottomOf="@+id/JobDescription"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="aasdfasdfasdfasdfghsfgkhj askdlhf aslödhjg asdjhjfah aöoue haö uao öhefaöjhd öh aö jha hg a"/>
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="85dp"
             android:layout_marginRight="35dp"
             android:text="DATE"
             app:layout_constraintTop_toBottomOf="@+id/JobDescriptionText"
@@ -80,11 +81,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             app:layout_constraintTop_toBottomOf="@+id/JobDescriptionText"
             app:layout_constraintRight_toRightOf="parent"
-            tools:text="LOCATION"/>
+            tools:text="Oulu"/>
 
         <TextView
             android:id="@+id/OwnerDescription"
@@ -94,13 +94,132 @@
             android:text="@string/owner_description"
             android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="85dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="20dp"
             android:paddingBottom="5dp"
             app:layout_constraintTop_toBottomOf="@+id/date"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/OwnerDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="The description of the owner yeyayeyaya as a kj akj ajk alkö jaklö jkl  klj k kjj kj lkj kj l ökj lj lkj lkj lk hjk gyi gl  goiufg lgh l kt lg ök yg ipug ök g klh oöug k hb"
+            android:textColor="#000000"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="35dp"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toBottomOf="@+id/OwnerDescription"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/ownerInfo"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ownerInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <LinearLayout
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/phone_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight=".2"
+                    android:background="@color/colorPrimaryDark"
+                    android:src="@drawable/phone_icon" />
+
+                <TextView
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center"
+                    android:layout_weight=".8"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="26dp"
+                    tools:text="+358406666666" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phone">
+
+                <ImageView
+                    android:id="@+id/mail_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight=".2"
+                    android:background="@color/colorPrimaryDark"
+                    android:src="@drawable/mail_icon" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center"
+                    android:layout_weight=".8"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="26dp"
+                    tools:text="+358406666666" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/salary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mail">
+
+                <ImageView
+                    android:id="@+id/salary_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight=".2"
+                    android:background="@color/colorPrimaryDark"
+                    android:src="@drawable/salary_icon" />
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center"
+                    android:layout_weight=".8"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="26dp"
+                    tools:text="+358406666666" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
