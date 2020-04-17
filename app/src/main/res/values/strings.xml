@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Guild</string>
     <string name="new_job_view">Create new job</string>
+    <string name="created_job_view">Created jobs</string>
+    <string name="edit_job_view">Edit job</string>
     <string name="title">Title</string>
     <string name="job_description">Job description</string>
     <string name="location">Location</string>

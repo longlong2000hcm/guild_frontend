@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        >
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+        </shape>
+    </item>
+    <item
+        android:height="35dp"
+        android:width="35dp"
+        android:gravity="center"
+        android:drawable="@drawable/ic_keyboard_arrow_left_black_24dp"/>
+</layer-list>

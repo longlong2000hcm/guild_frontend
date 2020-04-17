@@ -16,6 +16,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Button BtnAddView;
+    private Button BtnEditJob;
 
     List<Job> jobList;
     ListView listView;
@@ -24,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BtnEditJob = findViewById(R.id.BtnEditJob);
+        BtnEditJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToactivity_edit_job_view();
+            }
+        });
 
         BtnAddView = findViewById(R.id.BtnAddJob);
 
@@ -56,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToactivity_add_job_view(){
         Intent intent = new Intent(MainActivity.this, AddJobView.class);
+        startActivity(intent);
+    }
+
+    private void moveToactivity_edit_job_view(){
+        Intent intent = new Intent(MainActivity.this, EditJobView.class);
         startActivity(intent);
     }
 }
