@@ -15,9 +15,15 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-        finish();
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            }
+
+        }, 2000);
 
 
     }
