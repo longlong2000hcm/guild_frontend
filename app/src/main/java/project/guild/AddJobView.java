@@ -19,20 +19,17 @@ import android.widget.TextView;
 public class AddJobView extends AppCompatActivity {
     private CheckBox mCheckbox;
     private Button mButton;
-    private Button mCloseBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job_view);
 
-        mCloseBtn = findViewById(R.id.BtnClose);
-
-        mCloseBtn.setOnClickListener(new View.OnClickListener() {
+        Button back_button = findViewById(R.id.BtnClose);
+        back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                moveToactivity_add_job_view();
+                finish();
             }
         });
 

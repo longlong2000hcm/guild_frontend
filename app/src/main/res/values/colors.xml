@@ -3,6 +3,7 @@
     <color name="colorPrimary">@color/blue_1</color>
     <color name="colorPrimaryDark">@color/blue_1</color>
     <color name="colorAccent">@color/blue_5</color>
+    <color name="white">#fff</color>
 
     <color name="blue_1">#3983c5</color>
     <color name="blue_5">#7ccdef</color>

@@ -13,15 +13,33 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Create new job">
         </activity>
+        <activity android:name=".EditJobView"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:label="Edit job">
+        </activity>
+        <activity android:name=".EditingView"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Edit job">
+        </activity>
         <activity android:name=".DetailedJobView"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Detailed view of a job">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreenActivity"
+            android:theme="@style/SplashScreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
