@@ -14,6 +14,10 @@
             android:label="Create new job">
         </activity>
         <activity android:name=".EditJobView"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:label="Edit job">
+        </activity>
+        <activity android:name=".EditingView"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Edit job">
         </activity>

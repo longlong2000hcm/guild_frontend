@@ -44,7 +44,7 @@ public class EditJobView extends AppCompatActivity {
         listViewCJ.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent jobIntent = new Intent(getApplicationContext(), DetailedJobView.class);
+                Intent jobIntent = new Intent(getApplicationContext(), EditingView.class);
                 jobIntent.putExtra("JOB", (Serializable) jobList.get(position));
                 startActivity(jobIntent);
             }
