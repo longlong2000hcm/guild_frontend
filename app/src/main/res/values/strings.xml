@@ -7,4 +7,5 @@
     <string name="job_description">Job description</string>
     <string name="location">Location</string>
     <string name="owner_description">Owner description</string>
+    <string name="domain">http://10.0.2.2:4000</string>
 </resources>

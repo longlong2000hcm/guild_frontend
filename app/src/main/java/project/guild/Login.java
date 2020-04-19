@@ -51,7 +51,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.loginButton:
                 //log.setText(username.getText()+"/"+password.getText());
                 RequestQueue queue = Volley.newRequestQueue(this);
-                String url = "http://10.0.2.2:4000/users/login";
+                String domain = getResources().getString(R.string.domain);
+                String url = domain+"/users/login";
                 JSONObject requestBody = new JSONObject();
                 try {
                     requestBody.put("username", username.getText());
