@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="project.guild">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,38 +11,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddJobView"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="Create new job">
-        </activity>
-        <activity android:name=".EditJobView"
-        android:theme="@style/AppTheme.NoActionBar"
-        android:label="Edit job">
-        </activity>
-        <activity android:name=".EditingView"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="Edit job">
-        </activity>
-        <activity android:name=".DetailedJobView"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="Detailed view of a job">
-        </activity>
-        <activity android:name=".SplashScreenActivity"
-            android:theme="@style/SplashScreen"
-            >
+        <activity android:name=".Register"></activity>
+        <activity android:name=".Login" />
+        <activity
+            android:name=".AddJobView"
+            android:label="Create new job"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditJobView"
+            android:label="Edit job"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditingView"
+            android:label="Edit job"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailedJobView"
+            android:label="Detailed view of a job"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            >
-            <intent-filter>
+        <activity android:name=".MainActivity">
+
+            <!--
+            intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            </intent-filter
+            -->
         </activity>
     </application>
 
