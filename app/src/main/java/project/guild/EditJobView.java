@@ -34,8 +34,8 @@ public class EditJobView extends AppCompatActivity {
         jobList = new ArrayList<>();
         listViewCJ = (ListView) findViewById(R.id.listViewCJ);
 
-        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so god damn fed up with these little cunts I can't take it anymore","Oulu"));
-        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired aaaa aaaaa aaaa aaa aaaaa aaa aaaaaa aaaaaaa aaaa aaaa aa aaaaaa aaaaa aaaaaaa aaaa  aaaaaaa aaaaa aaaaa aa aaaaa aaaaa aa aaa aaaa aaa aaa aaaa aaaa aaa  aa a a","Helsinki"));
+        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so very tired.","Oulu"));
+        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired.","Helsinki"));
 
         JobListAdapter adapter = new JobListAdapter(this, R.layout.jobs, jobList);
 

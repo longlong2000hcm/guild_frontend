@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
         jobList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listView);
 
+        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so very tired.","Oulu"));
+        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired.","Helsinki"));
+
         BtnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
