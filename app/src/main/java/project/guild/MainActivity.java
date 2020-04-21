@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button BtnAddView;
     private Button BtnEditJob;
 
+    String idUser;
     List<Job> jobList;
     ListView listView;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        idUser =  getIntent().getStringExtra("idUser");
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String domain = getResources().getString(R.string.domain);
@@ -61,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
                         jobList.add(new Job(title, description, location));
                     }
+                    Log.i("mylog","request completed");
+                    JobListAdapter adapter = new JobListAdapter(MainActivity.this, R.layout.jobs, jobList);
+                    listView.setAdapter(adapter);
+                    Log.i("mylog","set adapter");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -89,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
         jobList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listView);
 
-        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so very tired.","Oulu"));
-        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired.","Helsinki"));
+//        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so very tired.","Oulu"));
+//        Log.i("mylog", "1st added");
+//        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired.","Helsinki"));
+//        Log.i("mylog", "2nd added");
 
         BtnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,10 +106,6 @@ public class MainActivity extends AppCompatActivity {
                 moveToactivity_add_job_view();
             }
         });
-
-        JobListAdapter adapter = new JobListAdapter(this, R.layout.jobs, jobList);
-
-        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -115,11 +119,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToactivity_add_job_view(){
         Intent intent = new Intent(MainActivity.this, AddJobView.class);
+        intent.putExtra("idUser", idUser);
         startActivity(intent);
     }
 
     private void moveToactivity_edit_job_view(){
         Intent intent = new Intent(MainActivity.this, EditJobView.class);
+        intent.putExtra("idUser", idUser);
         startActivity(intent);
     }
 }

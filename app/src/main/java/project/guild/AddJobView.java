@@ -10,20 +10,39 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddJobView extends AppCompatActivity {
     private CheckBox mCheckbox;
     private Button mButton;
+    String idUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job_view);
+        idUser = getIntent().getStringExtra("idUser");
 
         Button back_button = findViewById(R.id.BtnClose);
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +78,57 @@ public class AddJobView extends AppCompatActivity {
                     mButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            EditText title = findViewById(R.id.EditTitle);
+                            EditText description = findViewById(R.id.JobDescriptionText);
+                            EditText location = findViewById(R.id.ContactLocation);
+                            EditText salary = findViewById(R.id.SalaryOffer);
+                            EditText phone = findViewById(R.id.ContactPhoneNr);
 
-                            moveToactivity_add_job_view();
+                            RequestQueue queue = Volley.newRequestQueue(getBaseContext());
+                            String domain = getResources().getString(R.string.domain);
+                            String url = domain+"/api/jobs";
+                            JSONObject requestBody = new JSONObject();
+                            try {
+                                requestBody.put("title", title.getText());
+                                requestBody.put("description", description.getText());
+                                requestBody.put("location", location.getText());
+                                requestBody.put("salary", salary.getText());
+                                requestBody.put("phone", phone.getText());
+                                requestBody.put("ownerID", idUser);
+                            } catch (JSONException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                                    (Request.Method.POST, url, requestBody, new Response.Listener<JSONObject>() {
+
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+
+                                            Toast toast = Toast.makeText(getApplicationContext(), "Create job success", Toast.LENGTH_SHORT);
+                                            toast.show();
+                                            moveToactivity_add_job_view();
+
+                                        }
+                                    }, new Response.ErrorListener() {
+
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            // TODO: Handle error
+                                            Toast toast = Toast.makeText(getApplicationContext(), "Create job failed. Error: "+error.toString(), Toast.LENGTH_LONG);
+                                            toast.show();
+                                        }
+                                    }) {
+                                /** Passing some request headers* */
+                                @Override
+                                public Map getHeaders() throws AuthFailureError {
+                                    HashMap headers = new HashMap();
+                                    headers.put("Content-Type", "application/json");
+                                    return headers;
+                                }
+                            };
+
+                            queue.add(jsonObjectRequest);
                         }
                     });
                 }else{

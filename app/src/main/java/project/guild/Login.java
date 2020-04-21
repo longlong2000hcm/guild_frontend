@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,9 +75,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     Toast toast = Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_SHORT);
                                     toast.show();
                                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                    Log.i("mylog", idUser);
                                     intent.putExtra("idUser", idUser);
-                                    intent.putExtra("EXTRA_SESSION_ID", username);
-                                    intent.putExtra("EXTRA_SESSION_ID", token);
+                                    intent.putExtra("username", username);
+                                    intent.putExtra("token", token);
                                     startActivity(intent);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
