@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button BtnAddView;
     private Button BtnEditJob;
 
+    String idUser;
     List<Job> jobList;
     ListView listView;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        idUser =  getIntent().getStringExtra("idUser");
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String domain = getResources().getString(R.string.domain);
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToactivity_add_job_view(){
         Intent intent = new Intent(MainActivity.this, AddJobView.class);
+        intent.putExtra("idUser", idUser);
         startActivity(intent);
     }
 
