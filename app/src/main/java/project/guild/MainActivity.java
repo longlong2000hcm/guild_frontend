@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToactivity_edit_job_view(){
         Intent intent = new Intent(MainActivity.this, EditJobView.class);
+        intent.putExtra("idUser", idUser);
         startActivity(intent);
     }
 }
