@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
                         jobList.add(new Job(title, description, location));
                     }
+                    Log.i("mylog","request completed");
+                    JobListAdapter adapter = new JobListAdapter(MainActivity.this, R.layout.jobs, jobList);
+                    listView.setAdapter(adapter);
+                    Log.i("mylog","set adapter");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -89,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
         jobList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listView);
 
-        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so very tired.","Oulu"));
-        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired.","Helsinki"));
+//        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so very tired.","Oulu"));
+//        Log.i("mylog", "1st added");
+//        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired.","Helsinki"));
+//        Log.i("mylog", "2nd added");
 
         BtnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,10 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 moveToactivity_add_job_view();
             }
         });
-
-        JobListAdapter adapter = new JobListAdapter(this, R.layout.jobs, jobList);
-
-        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
