@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Job implements Serializable {
-    String title, description, location;
+    String title, description, location, phone, salary;
    // Date date;
 
-    public Job(String title, String description, String location) {
+    public Job(String title, String description, String location, String phone, String salary) {
         this.title = title;
         this.description = description;
         this.location= location;
+        this.phone = phone;
+        this.salary = salary;
       //  this.date= date;
     }
     public String getTitle() {
@@ -21,6 +23,12 @@ public class Job implements Serializable {
     }
     public String getDescription() {
         return description;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public String getSalary() {
+        return salary;
     }
    // public Date getDate(){
      //   return date; }

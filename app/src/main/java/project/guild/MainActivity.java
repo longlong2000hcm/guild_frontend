@@ -57,11 +57,15 @@ public class MainActivity extends AppCompatActivity {
 
                         String title = job.getString("title");
                         String description = job.getString("description");
+                        String phone = job.getString("phone");
+
+                        JSONObject salaryObj = job.getJSONObject("salary");
+                        String salary = salaryObj.getString("$numberDecimal");
 
                         JSONArray locationArr = job.getJSONArray("location");
                         String location = locationArr.getString(0);
 
-                        jobList.add(new Job(title, description, location));
+                        jobList.add(new Job(title, description, location, phone, salary + "€"));
                     }
                     Log.i("mylog","request completed");
                     JobListAdapter adapter = new JobListAdapter(MainActivity.this, R.layout.jobs, jobList);
@@ -94,11 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
         jobList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listView);
-
-//        jobList.add(new Job("Babysitting", "I want you to watch the kids for me, cause I'm so very tired.","Oulu"));
-//        Log.i("mylog", "1st added");
-//        jobList.add(new Job("Walk the dogs", "Come walk my dogs bro I'm so tired.","Helsinki"));
-//        Log.i("mylog", "2nd added");
 
         BtnAddView.setOnClickListener(new View.OnClickListener() {
             @Override

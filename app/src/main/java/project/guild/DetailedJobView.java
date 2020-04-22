@@ -28,6 +28,8 @@ public class DetailedJobView extends AppCompatActivity {
         String title = job.title;
         String description = job.description;
         String location = job.location;
+        String phone = job.phone;
+        String salary = job.salary;
 
         // set title
         TextView title_text = findViewById(R.id.title);
@@ -40,6 +42,14 @@ public class DetailedJobView extends AppCompatActivity {
         // set location
         TextView location_text = findViewById(R.id.location);
         location_text.setText(location);
+
+        // set phone
+        TextView phone_text = findViewById(R.id.phoneNumber);
+        phone_text.setText(phone);
+
+        // set salary
+        TextView salary_text = findViewById(R.id.amount);
+        salary_text.setText(salary);
 
         // set onclick for back button
         Button back_button = findViewById(R.id.back);
