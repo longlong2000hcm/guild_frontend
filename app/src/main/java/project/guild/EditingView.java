@@ -65,10 +65,18 @@ public class EditingView extends AppCompatActivity implements View.OnClickListen
     }
 
 
-
     @Override
     public void onClick(View v) {
+
+        RequestQueue queue = Volley.newRequestQueue(getBaseContext());
+        String domain = getResources().getString(R.string.domain);
+        String url = domain + "/api/jobs/" + id;
+        ;
+        JSONObject requestBody = new JSONObject();
+        JsonObjectRequest jsonObjectRequest;
+
         switch (v.getId()) {
+
             case R.id.BtnSaveJob:
                 EditText editTitle = findViewById(R.id.EditTitle);
                 EditText editDescription = findViewById(R.id.EditJobDescriptionText);
@@ -76,10 +84,6 @@ public class EditingView extends AppCompatActivity implements View.OnClickListen
                 EditText editPhone = findViewById(R.id.EditContactPhoneNr);
                 EditText editSalary = findViewById(R.id.EditSalaryOffer);
 
-                RequestQueue queue = Volley.newRequestQueue(getBaseContext());
-                String domain = getResources().getString(R.string.domain);
-                String url = domain+"/api/jobs/"+id;
-                JSONObject requestBody = new JSONObject();
                 try {
                     requestBody.put("title", editTitle.getText());
                     requestBody.put("description", editDescription.getText());
@@ -90,7 +94,7 @@ public class EditingView extends AppCompatActivity implements View.OnClickListen
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                jsonObjectRequest = new JsonObjectRequest
                         (Request.Method.PUT, url, requestBody, new Response.Listener<JSONObject>() {
 
                             @Override
@@ -98,7 +102,7 @@ public class EditingView extends AppCompatActivity implements View.OnClickListen
 
                                 Toast toast = Toast.makeText(getApplicationContext(), "Edit job success", Toast.LENGTH_SHORT);
                                 toast.show();
-                                Intent intent = new Intent(getApplicationContext(),EditJobView.class);
+                                Intent intent = new Intent(getApplicationContext(), EditJobView.class);
                                 startActivity(intent);
                                 finish();
 
@@ -108,7 +112,7 @@ public class EditingView extends AppCompatActivity implements View.OnClickListen
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 // TODO: Handle error
-                                Toast toast = Toast.makeText(getApplicationContext(), "Edit job failed. Error: "+error.toString(), Toast.LENGTH_LONG);
+                                Toast toast = Toast.makeText(getApplicationContext(), "Edit job failed. Error: " + error.toString(), Toast.LENGTH_LONG);
                                 toast.show();
                             }
                         }) {
@@ -124,6 +128,38 @@ public class EditingView extends AppCompatActivity implements View.OnClickListen
                 queue.add(jsonObjectRequest);
                 break;
             case R.id.BtnDelJob:
+                jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.DELETE, url, null, new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+
+                                Toast toast = Toast.makeText(getApplicationContext(), "Delete job success", Toast.LENGTH_SHORT);
+                                toast.show();
+                                Intent intent = new Intent(getApplicationContext(), EditJobView.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+                                Toast toast = Toast.makeText(getApplicationContext(), "Delete job failed. Error: " + error.toString(), Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        }) {
+                    /** Passing some request headers* */
+                    @Override
+                    public Map getHeaders() throws AuthFailureError {
+                        HashMap headers = new HashMap();
+                        headers.put("Content-Type", "application/json");
+                        return headers;
+                    }
+                };
+
+                queue.add(jsonObjectRequest);
                 break;
         }
     }
