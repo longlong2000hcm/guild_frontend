@@ -1,6 +1,8 @@
 package project.guild;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,7 +38,9 @@ public class EditJobView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_job_view);
-        idUser =  getIntent().getStringExtra("idUser");
+        SharedPreferences prefs = this.getSharedPreferences(
+                "Guild", Context.MODE_PRIVATE);
+        idUser = prefs.getString("Guild.idUser", "");
 
         jobList = new ArrayList<>();
         listViewCJ = (ListView) findViewById(R.id.listViewCJ);
@@ -101,6 +105,7 @@ public class EditJobView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent jobIntent = new Intent(getApplicationContext(), EditingView.class);
                 jobIntent.putExtra("JOB", (Serializable) jobList.get(position));
+                finish();
                 startActivity(jobIntent);
             }
         });
