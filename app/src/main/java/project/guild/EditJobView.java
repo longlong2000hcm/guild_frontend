@@ -95,6 +95,8 @@ public class EditJobView extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -105,8 +107,8 @@ public class EditJobView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent jobIntent = new Intent(getApplicationContext(), EditingView.class);
                 jobIntent.putExtra("JOB", (Serializable) jobList.get(position));
-                finish();
                 startActivity(jobIntent);
+                finish();
             }
         });
 

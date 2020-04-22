@@ -37,6 +37,8 @@ public class EditingView extends AppCompatActivity implements View.OnClickListen
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EditJobView.class);
+                startActivity(intent);
                 finish();
             }
         });

@@ -3,7 +3,9 @@ package project.guild;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -42,12 +44,16 @@ public class AddJobView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job_view);
-        idUser = getIntent().getStringExtra("idUser");
+        SharedPreferences prefs = this.getSharedPreferences(
+                "Guild", Context.MODE_PRIVATE);
+        idUser = prefs.getString("Guild.idUser", "");
 
         Button back_button = findViewById(R.id.BtnClose);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -107,7 +113,9 @@ public class AddJobView extends AppCompatActivity {
 
                                             Toast toast = Toast.makeText(getApplicationContext(), "Create job success", Toast.LENGTH_SHORT);
                                             toast.show();
-                                            moveToactivity_add_job_view();
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
 
                                         }
                                     }, new Response.ErrorListener() {
@@ -139,10 +147,4 @@ public class AddJobView extends AppCompatActivity {
 
 
     }
-
-    private void moveToactivity_add_job_view(){
-        Intent intent = new Intent(AddJobView.this, MainActivity.class);
-        startActivity(intent);
-    }
-
 }
