@@ -143,7 +143,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <!--LinearLayout
                 android:id="@+id/mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
                     android:textSize="26dp"
                     tools:text="user@guild.com" />
 
-            </LinearLayout>
+            </LinearLayout-->
 
             <LinearLayout
                 android:id="@+id/salary"
@@ -182,7 +182,7 @@
                 android:layout_marginBottom="1dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mail">
+                app:layout_constraintTop_toBottomOf="@+id/phone">
 
                 <ImageView
                     android:id="@+id/salary_icon"
