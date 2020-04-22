@@ -57,8 +57,10 @@ public class EditJobView extends AppCompatActivity {
                         JSONObject job = jobs.getJSONObject(i);
                         String title = job.getString("title");
                         String description = job.getString("description");
-                        String salary = job.getString("salary");
                         String phone = job.getString("phone");
+
+                        JSONObject salaryObj = job.getJSONObject("salary");
+                        String salary = salaryObj.getString("$numberDecimal");
 
                         JSONArray locationArr = job.getJSONArray("location");
                         String location = locationArr.getString(0);
