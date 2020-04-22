@@ -2,7 +2,9 @@ package project.guild;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        idUser =  getIntent().getStringExtra("idUser");
+        SharedPreferences prefs = this.getSharedPreferences(
+                "Guild", Context.MODE_PRIVATE);
+        idUser = prefs.getString("Guild.idUser", "");
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String domain = getResources().getString(R.string.domain);
-        String url = domain + "/api/jobs";
+        String url = domain + "/api/availableJobs/"+idUser;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 

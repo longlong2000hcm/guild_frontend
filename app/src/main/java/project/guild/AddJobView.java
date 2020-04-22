@@ -113,7 +113,7 @@ public class AddJobView extends AppCompatActivity {
 
                                             Toast toast = Toast.makeText(getApplicationContext(), "Create job success", Toast.LENGTH_SHORT);
                                             toast.show();
-                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            Intent intent = new Intent(getApplicationContext(), EditJobView.class);
                                             startActivity(intent);
                                             finish();
 
