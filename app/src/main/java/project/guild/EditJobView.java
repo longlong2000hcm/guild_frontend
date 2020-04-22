@@ -58,6 +58,7 @@ public class EditJobView extends AppCompatActivity {
                         String title = job.getString("title");
                         String description = job.getString("description");
                         String phone = job.getString("phone");
+                        String id = job.getString("_id");
 
                         JSONObject salaryObj = job.getJSONObject("salary");
                         String salary = salaryObj.getString("$numberDecimal");
@@ -65,7 +66,7 @@ public class EditJobView extends AppCompatActivity {
                         JSONArray locationArr = job.getJSONArray("location");
                         String location = locationArr.getString(0);
 
-                        jobList.add(new Job(title, description, location, phone, salary));
+                        jobList.add(new Job(title, description, location, phone, salary, id));
                     }
                     Log.i("mylog","request completed");
                     JobListAdapter adapter = new JobListAdapter(EditJobView.this, R.layout.jobs, jobList);
