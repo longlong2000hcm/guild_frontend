@@ -3,7 +3,9 @@ package project.guild;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -37,17 +39,22 @@ public class AddJobView extends AppCompatActivity {
     private CheckBox mCheckbox;
     private Button mButton;
     String idUser;
+    Boolean disclaimerChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job_view);
-        idUser = getIntent().getStringExtra("idUser");
+        SharedPreferences prefs = this.getSharedPreferences(
+                "Guild", Context.MODE_PRIVATE);
+        idUser = prefs.getString("Guild.idUser", "");
 
         Button back_button = findViewById(R.id.BtnClose);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -55,7 +62,7 @@ public class AddJobView extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.DisclaimerText);
 
-                String text = "\nDisclaimer\nSubmitting your job offer adds a small one-time fee. To keep this service clean and serious. (For now its free) You can only proceed by checking in the box before you can submit.\n";
+        String text = "\nDisclaimer\nSubmitting your job offer adds a small one-time fee. To keep this service clean and serious. (For now its free) You can only proceed by checking in the box before you can submit.\n";
 
         SpannableString ss = new SpannableString(text);
 
@@ -66,83 +73,84 @@ public class AddJobView extends AppCompatActivity {
         textView.setText(ss);
 
 
-        final Button mButton=(Button)findViewById( R.id.BtnSubmitJob);
-        CheckBox mCheckBox= ( CheckBox ) findViewById( R.id.DisclaimerCB);
-        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
-                if ( isChecked )
-                {
-                    mButton.setEnabled(true);
-                    mButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            EditText title = findViewById(R.id.EditTitle);
-                            EditText description = findViewById(R.id.JobDescriptionText);
-                            EditText location = findViewById(R.id.ContactLocation);
-                            EditText salary = findViewById(R.id.SalaryOffer);
-                            EditText phone = findViewById(R.id.ContactPhoneNr);
+        final Button mButton = (Button) findViewById(R.id.BtnSubmitJob);
+        CheckBox mCheckBox = (CheckBox) findViewById(R.id.DisclaimerCB);
 
-                            RequestQueue queue = Volley.newRequestQueue(getBaseContext());
-                            String domain = getResources().getString(R.string.domain);
-                            String url = domain+"/api/jobs";
-                            JSONObject requestBody = new JSONObject();
-                            try {
-                                requestBody.put("title", title.getText());
-                                requestBody.put("description", description.getText());
-                                requestBody.put("location", location.getText());
-                                requestBody.put("salary", salary.getText());
-                                requestBody.put("phone", phone.getText());
-                                requestBody.put("ownerID", idUser);
-                            } catch (JSONException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                                    (Request.Method.POST, url, requestBody, new Response.Listener<JSONObject>() {
-
-                                        @Override
-                                        public void onResponse(JSONObject response) {
-
-                                            Toast toast = Toast.makeText(getApplicationContext(), "Create job success", Toast.LENGTH_SHORT);
-                                            toast.show();
-                                            moveToactivity_add_job_view();
-
-                                        }
-                                    }, new Response.ErrorListener() {
-
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-                                            // TODO: Handle error
-                                            Toast toast = Toast.makeText(getApplicationContext(), "Create job failed. Error: "+error.toString(), Toast.LENGTH_LONG);
-                                            toast.show();
-                                        }
-                                    }) {
-                                /** Passing some request headers* */
-                                @Override
-                                public Map getHeaders() throws AuthFailureError {
-                                    HashMap headers = new HashMap();
-                                    headers.put("Content-Type", "application/json");
-                                    return headers;
-                                }
-                            };
-
-                            queue.add(jsonObjectRequest);
-                        }
-                    });
-                }else{
-                    mButton.setEnabled(false);
+        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    disclaimerChecked = true;
+                    //mButton.setEnabled(true);
+                } else {
+                    disclaimerChecked = false;
+                    //mButton.setEnabled(false);
                 }
+            }
+        });
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText title = findViewById(R.id.EditTitle);
+                EditText description = findViewById(R.id.JobDescriptionText);
+                EditText location = findViewById(R.id.ContactLocation);
+                EditText salary = findViewById(R.id.SalaryOffer);
+                EditText phone = findViewById(R.id.ContactPhoneNr);
+
+                RequestQueue queue = Volley.newRequestQueue(getBaseContext());
+                String domain = getResources().getString(R.string.domain);
+                String url = domain + "/api/jobs";
+                JSONObject requestBody = new JSONObject();
+                try {
+                    requestBody.put("title", title.getText());
+                    requestBody.put("description", description.getText());
+                    requestBody.put("location", location.getText());
+                    requestBody.put("salary", salary.getText());
+                    requestBody.put("phone", phone.getText());
+                    requestBody.put("ownerID", idUser);
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.POST, url, requestBody, new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+
+                                Toast toast = Toast.makeText(getApplicationContext(), "Create job success", Toast.LENGTH_SHORT);
+                                toast.show();
+                                Intent intent = new Intent(getApplicationContext(), EditJobView.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+                                Toast toast = Toast.makeText(getApplicationContext(), "Create job failed. Error: " + error.toString(), Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        }) {
+                    /** Passing some request headers* */
+                    @Override
+                    public Map getHeaders() throws AuthFailureError {
+                        HashMap headers = new HashMap();
+                        headers.put("Content-Type", "application/json");
+                        return headers;
+                    }
+                };
+                if (disclaimerChecked) {
+                    queue.add(jsonObjectRequest);
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "You haven't checked the disclaimer", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+
             }
         });
 
 
     }
-
-    private void moveToactivity_add_job_view(){
-        Intent intent = new Intent(AddJobView.this, MainActivity.class);
-        startActivity(intent);
-    }
-
 }

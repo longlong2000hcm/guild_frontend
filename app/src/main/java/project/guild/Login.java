@@ -6,6 +6,7 @@ import android.Manifest;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -74,6 +75,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     String token = response.getString("token");
                                     Toast toast = Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_SHORT);
                                     toast.show();
+                                    SharedPreferences sharedPref = Login.this.getSharedPreferences("Guild",Context.MODE_PRIVATE);
+                                    sharedPref.edit().putString("Guild.idUser", idUser).apply();
                                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                                     Log.i("mylog", idUser);
                                     intent.putExtra("idUser", idUser);

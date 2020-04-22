@@ -2,7 +2,9 @@ package project.guild;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        idUser =  getIntent().getStringExtra("idUser");
+        SharedPreferences prefs = this.getSharedPreferences(
+                "Guild", Context.MODE_PRIVATE);
+        idUser = prefs.getString("Guild.idUser", "");
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String domain = getResources().getString(R.string.domain);
-        String url = domain + "/api/jobs";
+        String url = domain + "/api/availableJobs/"+idUser;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         String title = job.getString("title");
                         String description = job.getString("description");
                         String phone = job.getString("phone");
+                        String id = job.getString("_id");
 
                         JSONObject salaryObj = job.getJSONObject("salary");
                         String salary = salaryObj.getString("$numberDecimal");
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONArray locationArr = job.getJSONArray("location");
                         String location = locationArr.getString(0);
 
-                        jobList.add(new Job(title, description, location, phone, salary + "€"));
+                        jobList.add(new Job(title, description, location, phone, salary + "€", id));
                     }
                     Log.i("mylog","request completed");
                     JobListAdapter adapter = new JobListAdapter(MainActivity.this, R.layout.jobs, jobList);
@@ -120,11 +125,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, AddJobView.class);
         intent.putExtra("idUser", idUser);
         startActivity(intent);
+        finish();
     }
 
     private void moveToactivity_edit_job_view(){
         Intent intent = new Intent(MainActivity.this, EditJobView.class);
         intent.putExtra("idUser", idUser);
         startActivity(intent);
+        finish();
     }
 }
